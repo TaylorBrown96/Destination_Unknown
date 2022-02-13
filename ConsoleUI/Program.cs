@@ -26,13 +26,11 @@ namespace ConsoleUI
 
 			// Lists
 			List<string> Items = new List<string>(); // 4
-			string[] RangItems = { "Small Wallet", "Pencil",
-								   "Notepad", "Map" };
+			string[] RangItems = { "Small Wallet", "Pencil", "Notepad", "Map" };
 			Items.AddRange(RangItems);
 
 			List<string> Mobs = new List<string>(); // 5
-			string[] RangMobs= { "Necromancer", "Golem", "Mimic",
-								 "A.I Soldier", "General" };
+			string[] RangMobs= { "Necromancer", "Golem", "Mimic", "A.I Soldier", "General" };
 			Mobs.AddRange(RangMobs);
 
 
@@ -48,7 +46,8 @@ namespace ConsoleUI
 				Console.WriteLine("4. Display Treasure");
 				Console.WriteLine("5. Display Items");
 				Console.WriteLine("6. Display Mobs");
-				Console.WriteLine("7. Exit");
+				Console.WriteLine("7. Test Play");
+				Console.WriteLine("8. Exit");
 				Console.Write("Enter a choice > ");
 				string input = Console.ReadLine();
 
@@ -77,6 +76,10 @@ namespace ConsoleUI
 					DisplayList(ref Mobs);
 				}
 				else if (input == "7")
+                {
+					TestPlay(ref Rooms);
+                }
+				else if (input == "8")
 				{
 					Console.WriteLine("Goodbye");
 					exit = true;
@@ -88,6 +91,60 @@ namespace ConsoleUI
 			}
 		}
 
+		// Current game play Method
+		public static void TestPlay(ref string[] Rooms)
+		{
+			int currentLocation = 2;
+			Console.WriteLine("\nIf you want to move north type 'n'");
+			Console.WriteLine("If you want to move south type 's'");
+			Console.WriteLine("To display the rooms type 'rooms'");
+			Console.WriteLine("To go back to the main menu type 'exit'");
+			Console.WriteLine("\nYour current location is the Bathroom\n");
+
+			bool exit = false;
+			while (exit == false)
+			{
+				Console.Write(">");
+				string input = Console.ReadLine();
+
+				if (input == "n")
+				{
+					if (currentLocation < 4)
+					{
+						currentLocation += 1;
+						Console.WriteLine(Rooms[currentLocation] + "\n");
+					}
+					else
+					{
+						Console.WriteLine("There are no more rooms in this direction\n");
+					}
+				}
+				else if (input == "s")
+				{
+					if (currentLocation > 0)
+					{
+						currentLocation -= 1;
+						Console.WriteLine(Rooms[currentLocation] + "\n");
+					}
+					else
+					{
+						Console.WriteLine("There are no more rooms in this direction\n");
+					}
+				}
+				else if (input == "rooms")
+                {
+					DisplayArray(ref Rooms);
+                }
+				else if (input == "exit")
+                {
+					exit = true;
+                }
+				else
+                {
+					Console.WriteLine("\nInvalid Choice!\n");
+                }
+			}
+		}
 
 		// Iterates through each item in a given array
 		public static void DisplayArray(ref string[] arr)
