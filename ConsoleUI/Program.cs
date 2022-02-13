@@ -1,5 +1,5 @@
 ﻿/**
-* 07FEB22
+* 13FEB22
 * CSC 153
 * Taylor J. Brown
 * This program is a maze/rpg text adventure game. 
@@ -18,14 +18,23 @@ namespace ConsoleUI
 		static void Main(string[] args)
 		{
 			// Arrays
-			string[] Rooms = { "hey", "cool" }; // 5
-			string[] Weapons = { }; // 4
-			string[] Potions = { }; // 2
-			string[] Treasures = { }; // 3
+			string[] Rooms = { "Kitchen", "Living Room", "Bathroom", "Garage", "Back Deck" }; // 5
+			string[] Weapons = { "Broad sword", "Dagger", "Butter Knife", "Machine Gun" }; // 4
+			string[] Potions = { "Large Health Potion", "Mana Potion" }; // 2
+			string[] Treasures = { "Golden Trophy", "Giant Diamond", "Fancy Heirloom" }; // 3
+
 
 			// Lists
 			List<string> Items = new List<string>(); // 4
+			string[] RangItems = { "Small Wallet", "Pencil",
+								   "Notepad", "Map" };
+			Items.AddRange(RangItems);
+
 			List<string> Mobs = new List<string>(); // 5
+			string[] RangMobs= { "Necromancer", "Golem", "Mimic",
+								 "A.I Soldier", "General" };
+			Mobs.AddRange(RangMobs);
+
 
 			//Main menu
 			bool exit = false;
@@ -69,32 +78,38 @@ namespace ConsoleUI
 				}
 				else if (input == "7")
 				{
+					Console.WriteLine("Goodbye");
 					exit = true;
 				}
 				else
 				{
-					Console.WriteLine("Invalid choice!");
+					Console.WriteLine("\nInvalid choice!\n");
 				}
 			}
 		}
 
+
 		// Iterates through each item in a given array
 		public static void DisplayArray(ref string[] arr)
 		{
-
+			Console.WriteLine();
 			foreach (string item in arr)
 			{
 				Console.WriteLine(item);
 			}
+			Console.WriteLine();
 		}
 
 		// Iterates through each item in a given list
 		public static void DisplayList(ref List<string> list)
 		{
+			Console.WriteLine();
 			foreach (string item in list)
 			{
 				Console.WriteLine(item);
 			}
+			Console.WriteLine();
 		}
+
 	}
 }
