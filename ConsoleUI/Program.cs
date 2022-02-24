@@ -52,7 +52,7 @@ namespace ConsoleUI
             }
             catch
             {
-				Console.WriteLine("Please enter in a username: ");
+				Console.Write("Please enter in a username: ");
 				userName = Console.ReadLine();
 
 				StreamWriter outputFile = File.CreateText("Game_Data/User_Profile.txt");
