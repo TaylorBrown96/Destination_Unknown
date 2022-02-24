@@ -42,11 +42,6 @@ namespace ConsoleUI
 			OpenFiles(ref Items, itemsFile);
 			OpenFiles(ref Mobs, mobsFile);
 
-			List<string> Mobs = new List<string>(); // 5
-			string[] RangMobs= { "Necromancer", "Golem", "Mimic", "A.I Soldier", "General" };
-			Mobs.AddRange(RangMobs);
-
-
 			//Main menu
 			bool exit = false;
 			while (exit == false)
@@ -159,15 +154,28 @@ namespace ConsoleUI
 			}
 		}
 
-		// Iterates through each item in a given array
-		public static void DisplayArray(ref string[] arr)
+
+		// Takes in an empty list and the file path and returns the updated list
+		public static List<string> OpenFiles(ref List<string> list, string filePath)
+
 		{
-			Console.WriteLine();
-			foreach (string item in arr)
+			StreamReader reader;
+			char delim = ',';
+
+			reader = File.OpenText(filePath);
+			while (reader.EndOfStream == false)
 			{
-				Console.WriteLine(item);
+				string nameValues = reader.ReadLine();
+				string[] tokens = nameValues.Split(delim);
+
+				foreach (string name in tokens)
+				{
+					list.Add(name);
+				}
 			}
-			Console.WriteLine();
+			reader.Close();
+
+			return list;
 		}
 
 
