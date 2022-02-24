@@ -26,7 +26,7 @@ namespace ConsoleUI
 			List<string> Items = new List<string>();
 			List<string> Mobs = new List<string>();
 
-			// Sets all file paths to csv files for each list
+			// Sets all file paths to csv files for each list.
 			string roomsFile = "Game_Data/Rooms.csv";
 			string weaponsFile = "Game_Data/Weapons.csv";
 			string potionsFile = "Game_Data/Potions.csv";
@@ -34,13 +34,36 @@ namespace ConsoleUI
 			string itemsFile = "Game_Data/Items.csv";
 			string mobsFile = "Game_Data/Mobs.csv";
 
-			// Opens the file and returns the updated list contents
+			// Opens the file and returns the updated list contents.
 			OpenFiles(ref Rooms, roomsFile);
 			OpenFiles(ref Weapons, weaponsFile);
 			OpenFiles(ref Potions, potionsFile);
 			OpenFiles(ref Treasures, treasuresFile);
 			OpenFiles(ref Items, itemsFile);
 			OpenFiles(ref Mobs, mobsFile);
+
+			// Checks to see if user has created a profile. If not the user is asked to create one.
+			string userName = null;
+			try
+            {
+				StreamReader sr = new StreamReader("Game_Data/User_Profile.txt");
+				userName = sr.ReadLine();
+				sr.Close();
+            }
+            catch
+            {
+				Console.WriteLine("Please enter in a username: ");
+				userName = Console.ReadLine();
+
+				StreamWriter outputFile = File.CreateText("Game_Data/User_Profile.txt");
+				outputFile.WriteLine(userName);
+				outputFile.Close();
+
+				Console.WriteLine();
+			}
+
+			// Prints greating for the user.
+			Console.WriteLine("Hello " + userName + "\n");
 
 			//Main menu
 			bool exit = false;
@@ -88,7 +111,6 @@ namespace ConsoleUI
                 }
 				else if (input == "8")
 				{
-					Console.WriteLine("Goodbye");
 					exit = true;
 				}
 				else
@@ -144,6 +166,7 @@ namespace ConsoleUI
                 }
 				else if (input == "exit")
                 {
+					Console.WriteLine();
 					exit = true;
                 }
 				else
@@ -154,7 +177,7 @@ namespace ConsoleUI
 		}
 
 
-		// Takes in an empty list and the file path and returns the updated list
+		// Takes in an empty list and the file path and returns the updated list.
 		public static List<string> OpenFiles(ref List<string> list, string filePath)
 
 		{
@@ -178,7 +201,7 @@ namespace ConsoleUI
 		}
 
 
-		// Iterates through each item in a given list
+		// Iterates through each item in a given list.
 		public static void DisplayList(ref List<string> list)
 		{
 			Console.WriteLine();

@@ -14,3 +14,11 @@ C:\Users\Taylor\Documents\School\4_Spring_2022\CSC-153 C# Programming\TextAdvent
 C:\Users\Taylor\Documents\School\4_Spring_2022\CSC-153 C# Programming\TextAdventure1\ConsoleUI\obj\Debug\ConsoleUI.csproj.CoreCompileInputs.cache
 C:\Users\Taylor\Documents\School\4_Spring_2022\CSC-153 C# Programming\TextAdventure1\ConsoleUI\obj\Debug\ConsoleUI.exe
 C:\Users\Taylor\Documents\School\4_Spring_2022\CSC-153 C# Programming\TextAdventure1\ConsoleUI\obj\Debug\ConsoleUI.pdb
+C:\Users\Taylor\Documents\School\4_Spring_2022\CSC-153 C# Programming\DestinationUnknown\ConsoleUI\bin\Debug\ConsoleUI.exe.config
+C:\Users\Taylor\Documents\School\4_Spring_2022\CSC-153 C# Programming\DestinationUnknown\ConsoleUI\bin\Debug\ConsoleUI.exe
+C:\Users\Taylor\Documents\School\4_Spring_2022\CSC-153 C# Programming\DestinationUnknown\ConsoleUI\bin\Debug\ConsoleUI.pdb
+C:\Users\Taylor\Documents\School\4_Spring_2022\CSC-153 C# Programming\DestinationUnknown\ConsoleUI\obj\Debug\ConsoleUI.csproj.AssemblyReference.cache
+C:\Users\Taylor\Documents\School\4_Spring_2022\CSC-153 C# Programming\DestinationUnknown\ConsoleUI\obj\Debug\ConsoleUI.csproj.SuggestedBindingRedirects.cache
+C:\Users\Taylor\Documents\School\4_Spring_2022\CSC-153 C# Programming\DestinationUnknown\ConsoleUI\obj\Debug\ConsoleUI.csproj.CoreCompileInputs.cache
+C:\Users\Taylor\Documents\School\4_Spring_2022\CSC-153 C# Programming\DestinationUnknown\ConsoleUI\obj\Debug\ConsoleUI.exe
+C:\Users\Taylor\Documents\School\4_Spring_2022\CSC-153 C# Programming\DestinationUnknown\ConsoleUI\obj\Debug\ConsoleUI.pdb
