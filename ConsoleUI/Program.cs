@@ -46,7 +46,6 @@ namespace ConsoleUI
 			bool exit = false;
 			while (exit == false)
 			{
-
 				Console.WriteLine("Main Menu");
 				Console.WriteLine("1. Display Rooms");
 				Console.WriteLine("2. Display Weapons");

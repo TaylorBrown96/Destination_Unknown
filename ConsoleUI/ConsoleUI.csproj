@@ -48,12 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Game_Data\Rooms.csv" />
-    <None Include="Game_Data\Items.csv" />
-    <None Include="Game_Data\Mobs.csv" />
-    <None Include="Game_Data\Potions.csv" />
-    <None Include="Game_Data\Treasures.csv" />
-    <None Include="Game_Data\Weapons.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
