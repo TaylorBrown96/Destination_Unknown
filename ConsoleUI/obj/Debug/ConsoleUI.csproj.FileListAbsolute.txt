@@ -1,0 +1,8 @@
+C:\Users\Taylor\Source\Repos\TaylorBrown96\Destination_Unknown\ConsoleUI\bin\Debug\ConsoleUI.exe.config
+C:\Users\Taylor\Source\Repos\TaylorBrown96\Destination_Unknown\ConsoleUI\bin\Debug\ConsoleUI.exe
+C:\Users\Taylor\Source\Repos\TaylorBrown96\Destination_Unknown\ConsoleUI\bin\Debug\ConsoleUI.pdb
+C:\Users\Taylor\Source\Repos\TaylorBrown96\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.csproj.AssemblyReference.cache
+C:\Users\Taylor\Source\Repos\TaylorBrown96\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.csproj.SuggestedBindingRedirects.cache
+C:\Users\Taylor\Source\Repos\TaylorBrown96\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.csproj.CoreCompileInputs.cache
+C:\Users\Taylor\Source\Repos\TaylorBrown96\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.exe
+C:\Users\Taylor\Source\Repos\TaylorBrown96\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.pdb
