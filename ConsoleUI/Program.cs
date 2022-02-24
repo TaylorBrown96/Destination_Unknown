@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ConsoleUI
 {
@@ -17,22 +18,28 @@ namespace ConsoleUI
 	{
 		static void Main(string[] args)
 		{
-			// Arrays
-			string[] Rooms = { "Kitchen", "Living Room", "Bathroom", "Garage", "Back Deck" }; // 5
-			string[] Weapons = { "Broad sword", "Dagger", "Butter Knife", "Machine Gun" }; // 4
-			string[] Potions = { "Large Health Potion", "Mana Potion" }; // 2
-			string[] Treasures = { "Golden Trophy", "Giant Diamond", "Fancy Heirloom" }; // 3
-
-
 			// Lists
-			List<string> Items = new List<string>(); // 4
-			string[] RangItems = { "Small Wallet", "Pencil", "Notepad", "Map" };
-			Items.AddRange(RangItems);
+			List<string> Rooms = new List<string>();
+			List<string> Weapons = new List<string>();
+			List<string> Potions = new List<string>();
+			List<string> Treasures = new List<string>();
+			List<string> Items = new List<string>();
+			List<string> Mobs = new List<string>();
 
-			List<string> Mobs = new List<string>(); // 5
-			string[] RangMobs= { "Necromancer", "Golem", "Mimic", "A.I Soldier", "General" };
-			Mobs.AddRange(RangMobs);
+			string roomsFile = "Game_Data/Rooms.csv";
+			string weaponsFile = "Game_Data/Weapons.csv";
+			string potionsFile = "Game_Data/Potions.csv";
+			string treasuresFile = "Game_Data/Treasures.csv";
+			string itemsFile = "Game_Data/Items.csv";
+			string mobsFile = "Game_Data/Mobs.csv";
 
+			// Opens the file and returns the updated list contents
+			Rooms = OpenFiles(ref Rooms, roomsFile);
+			OpenFiles(ref Weapons, weaponsFile);
+			OpenFiles(ref Potions, potionsFile);
+			OpenFiles(ref Treasures, treasuresFile);
+			OpenFiles(ref Items, itemsFile);
+			OpenFiles(ref Mobs, mobsFile);
 
 			//Main menu
 			bool exit = false;
@@ -53,19 +60,19 @@ namespace ConsoleUI
 
 				if (input == "1")
 				{
-					DisplayArray(ref Rooms);
+					DisplayList(ref Rooms);
 				}
 				else if (input == "2")
 				{
-					DisplayArray(ref Weapons);
+					DisplayList(ref Weapons);
 				}
 				else if (input == "3")
 				{
-					DisplayArray(ref Potions);
+					DisplayList(ref Potions);
 				}
 				else if (input == "4")
 				{
-					DisplayArray(ref Treasures);
+					DisplayList(ref Treasures);
 				}
 				else if (input == "5")
 				{
@@ -92,7 +99,7 @@ namespace ConsoleUI
 		}
 
 		// Current game play Method
-		public static void TestPlay(ref string[] Rooms)
+		public static void TestPlay(ref List<string> Rooms)
 		{
 			int currentLocation = 2;
 			Console.WriteLine("\nIf you want to move north type 'n'");
@@ -133,7 +140,7 @@ namespace ConsoleUI
 				}
 				else if (input == "rooms")
                 {
-					DisplayArray(ref Rooms);
+					DisplayList(ref Rooms);
                 }
 				else if (input == "exit")
                 {
@@ -146,16 +153,28 @@ namespace ConsoleUI
 			}
 		}
 
-		// Iterates through each item in a given array
-		public static void DisplayArray(ref string[] arr)
-		{
-			Console.WriteLine();
-			foreach (string item in arr)
-			{
-				Console.WriteLine(item);
-			}
-			Console.WriteLine();
-		}
+
+		public static List<string> OpenFiles(ref List<string> list, string fileName)
+        {
+			StreamReader reader;
+			char delim = ',';
+
+			reader = File.OpenText(fileName);
+			while (reader.EndOfStream == false)
+            {
+				string nameValues = reader.ReadLine();
+				string[] tokens = nameValues.Split(delim);
+
+				foreach (string name in tokens)
+                {
+					list.Add(name);
+                }
+            }
+			reader.Close();
+			return (list);
+
+        }
+
 
 		// Iterates through each item in a given list
 		public static void DisplayList(ref List<string> list)
