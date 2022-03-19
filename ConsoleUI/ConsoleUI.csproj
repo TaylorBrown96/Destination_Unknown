@@ -50,8 +50,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DestinationUnkownLibrary\DestinationUnknownLibrary.csproj">
-      <Project>{97160439-919a-404e-97e9-665f8247dc02}</Project>
+    <ProjectReference Include="..\DestinationUnknownLibrary\DestinationUnknownLibrary.csproj">
+      <Project>{6706c168-2901-4cbc-b750-3695dc3b43fa}</Project>
       <Name>DestinationUnknownLibrary</Name>
     </ProjectReference>
   </ItemGroup>

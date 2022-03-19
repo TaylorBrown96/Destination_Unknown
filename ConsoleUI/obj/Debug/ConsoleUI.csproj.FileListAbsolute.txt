@@ -33,14 +33,14 @@ C:\Users\Taylor\Documents\School\4_Spring_2022\CSC-153 C# Programming\Destinatio
 C:\Users\Taylor\Documents\School\4_Spring_2022\CSC-153 C# Programming\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.csproj.CopyComplete
 C:\Users\Taylor\Documents\School\4_Spring_2022\CSC-153 C# Programming\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.exe
 C:\Users\Taylor\Documents\School\4_Spring_2022\CSC-153 C# Programming\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.pdb
-C:\Users\Taylor\Source\Repos\Destination_Unknown\ConsoleUI\bin\Debug\ConsoleUI.exe.config
-C:\Users\Taylor\Source\Repos\Destination_Unknown\ConsoleUI\bin\Debug\ConsoleUI.exe
-C:\Users\Taylor\Source\Repos\Destination_Unknown\ConsoleUI\bin\Debug\ConsoleUI.pdb
-C:\Users\Taylor\Source\Repos\Destination_Unknown\ConsoleUI\bin\Debug\DestinationUnkownLibrary.dll
-C:\Users\Taylor\Source\Repos\Destination_Unknown\ConsoleUI\bin\Debug\DestinationUnkownLibrary.pdb
-C:\Users\Taylor\Source\Repos\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.csproj.AssemblyReference.cache
-C:\Users\Taylor\Source\Repos\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.csproj.SuggestedBindingRedirects.cache
-C:\Users\Taylor\Source\Repos\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.csproj.CoreCompileInputs.cache
-C:\Users\Taylor\Source\Repos\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.csproj.CopyComplete
-C:\Users\Taylor\Source\Repos\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.exe
-C:\Users\Taylor\Source\Repos\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.pdb
+C:\Users\Taylor\source\repos\Destination_Unknown\ConsoleUI\bin\Debug\ConsoleUI.exe.config
+C:\Users\Taylor\source\repos\Destination_Unknown\ConsoleUI\bin\Debug\ConsoleUI.exe
+C:\Users\Taylor\source\repos\Destination_Unknown\ConsoleUI\bin\Debug\ConsoleUI.pdb
+C:\Users\Taylor\source\repos\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.csproj.AssemblyReference.cache
+C:\Users\Taylor\source\repos\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.csproj.SuggestedBindingRedirects.cache
+C:\Users\Taylor\source\repos\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.csproj.CoreCompileInputs.cache
+C:\Users\Taylor\source\repos\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.csproj.CopyComplete
+C:\Users\Taylor\source\repos\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.exe
+C:\Users\Taylor\source\repos\Destination_Unknown\ConsoleUI\obj\Debug\ConsoleUI.pdb
+C:\Users\Taylor\source\repos\Destination_Unknown\ConsoleUI\bin\Debug\DestinationUnknownLibrary.dll
+C:\Users\Taylor\source\repos\Destination_Unknown\ConsoleUI\bin\Debug\DestinationUnknownLibrary.pdb

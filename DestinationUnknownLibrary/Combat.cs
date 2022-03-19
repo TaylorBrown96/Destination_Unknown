@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DestinationUnkownLibrary
+namespace DestinationUnknownLibrary
 {
     // Will add [Block, Heal, Run] methods to class
     public class Combat

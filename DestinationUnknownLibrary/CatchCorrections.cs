@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace DestinationUnkownLibrary
+namespace DestinationUnknownLibrary
 {
     // This class will be expanded on to give the user multiple chances to enter in the correct values.
     public class CatchCorrections
