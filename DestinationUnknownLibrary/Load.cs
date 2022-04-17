@@ -90,8 +90,9 @@ namespace DestinationUnknownLibrary
 				invReader.Close();
 				questReader.Close();
 			}
-			catch (Exception)
+			catch (Exception e)
 			{
+				Console.WriteLine(e.Message);
 				int id = 0;
 
 				Console.Write("Please enter a username: ");
@@ -198,7 +199,11 @@ namespace DestinationUnknownLibrary
 				StreamWriter questFile = File.CreateText("Game_Data/User_Quests.csv");
 				
 				userFile.WriteLine(id + "," + name + "," + password + "," + race + "," + Pclass + "," + hp + "," + location);
-				invFile.WriteLine();
+				
+				for (int i = 0; i < inv.Count; i++)
+                {
+					invFile.WriteLine(inv[i]);
+				}
 				questFile.WriteLine();
 
 				userFile.Close();
@@ -215,10 +220,6 @@ namespace DestinationUnknownLibrary
 		// Loads Rooms
 		public static void LoadRooms()
 		{
-			List<int> mobs = new List<int>();
-			List<int> loot = new List<int>();
-			List<int> exits = new List<int>();
-			
 			string line;
 			StreamReader room = File.OpenText("Game_Data/Rooms.csv");
 			StreamReader room_Mobs = File.OpenText("Game_Data/Room_Mobs.csv");
@@ -226,6 +227,9 @@ namespace DestinationUnknownLibrary
 			while ((line = room.ReadLine()) != null)
 			{
 				string[] tokens = line.Split(',');
+				List<int> mobs = new List<int>();
+				List<int> loot = new List<int>();
+				List<int> exits = new List<int>();
 
 				int roomID = int.Parse(tokens[0]);
 				string name = tokens[1];
@@ -247,14 +251,14 @@ namespace DestinationUnknownLibrary
 					{
 						mobs.Add(int.Parse(mob[i]));
 					}
-					while ((line = room_Loot.ReadLine()) != null)
+					break;
+				}
+				while ((line = room_Loot.ReadLine()) != null)
+				{
+					string[] room_loot = line.Split(',');
+					for (int i = 0; i < room_loot.Length; i++)
 					{
-						string[] room_loot = line.Split(',');
-						for (int i = 0; i < room_loot.Length; i++)
-						{
-							loot.Add(int.Parse(room_loot[i]));
-						}
-						break;
+						loot.Add(int.Parse(room_loot[i]));
 					}
 					break;
 				}
