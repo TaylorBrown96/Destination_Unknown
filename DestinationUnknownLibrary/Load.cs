@@ -90,9 +90,8 @@ namespace DestinationUnknownLibrary
 				invReader.Close();
 				questReader.Close();
 			}
-			catch (Exception e)
+			catch (Exception)
 			{
-				Console.WriteLine(e.Message);
 				int id = 0;
 
 				Console.Write("Please enter a username: ");
