@@ -1,5 +1,5 @@
 ﻿/**
-* 18MAR22
+* 17APR22
 * CSC 153
 * Taylor J. Brown
 * This program is a maze/rpg text adventure game. 
@@ -13,12 +13,9 @@ using System.Threading.Tasks;
 
 namespace DestinationUnknownLibrary
 {
-    // Will add [Block, Heal, Run] methods to class
     public class Combat
     {
-        // Takes in an argument of HP and generates a random number between 1-20 to
-        // subtract from the total and then returns the new HP value.
-        public static int Attack(ref int HP)
+        public static int Attack(int HP)
         {
             Random rnd = new Random();
             HP -= rnd.Next(1,21);
