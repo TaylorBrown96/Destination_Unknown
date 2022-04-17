@@ -28,9 +28,8 @@ namespace ConsoleUI
 			while (!valid)
 			{
 				Console.Write("Please enter your password: ");
-				string usrinp = Console.ReadLine();
 
-				if (usrinp == Player.player[0].Password)
+				if (Console.ReadLine() == Player.player[0].Password)
 				{
 					valid = Play();
 				}
