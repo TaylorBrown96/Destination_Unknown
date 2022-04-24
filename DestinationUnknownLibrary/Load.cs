@@ -14,11 +14,10 @@ using System.IO;
 
 namespace DestinationUnknownLibrary
 {
-    public class Load
-    {
+	public class Load
+	{
 		public static void Game()
 		{
-			LoadUser();
 			LoadRooms();
 			LoadWeapons();
 			LoadPotions();
@@ -29,27 +28,26 @@ namespace DestinationUnknownLibrary
 
 
 		// Loads User profile
-		public static void LoadUser()
-        {
-			
+		public static Player LoadUser()
+		{
+			int id = 0;
+			string name = "";
+			string password = "";
+			string race = "";
+			string Pclass = "";
+			int hp = 100;
+			int location = 0;
+			List<int> inv = new List<int>();
+			List<string> quests = new List<string>();
+
 			try
 			{
-				List<int> inv = new List<int>();
-				List<string> quests = new List<string>();
-
-				int id = 0;
-				string name = "";
-				string password = "";
-				string race = "";
-				string Pclass = "";
-				int hp = 100;
-				int location = 0;
 
 
 				StreamReader userReader = File.OpenText("Game_Data/User_Profile.csv");
 				StreamReader invReader = File.OpenText("Game_Data/User_Inventory.csv");
 				StreamReader questReader = File.OpenText("Game_Data/User_Quests.csv");
-				
+
 				string line;
 				while ((line = userReader.ReadLine()) != null)
 				{
@@ -69,9 +67,9 @@ namespace DestinationUnknownLibrary
 					string[] tokens = line.Split(',');
 
 					for (int i = 0; i < tokens.Length; i++)
-                    {
+					{
 						inv.Add(int.Parse(tokens[i]));
-                    }
+					}
 				}
 
 				while ((line = questReader.ReadLine()) != null)
@@ -84,21 +82,22 @@ namespace DestinationUnknownLibrary
 					}
 				}
 
-				Player.player.Add(new Player(id, name, password, race, Pclass, hp, location, inv, quests));
-
 				userReader.Close();
 				invReader.Close();
 				questReader.Close();
+
+				Player player = new Player(id, name, password, race, Pclass, hp, location, inv, quests);
+				return player;
 			}
 			catch (Exception)
 			{
-				int id = 0;
+				id = 0;
 
 				Console.Write("Please enter a username: ");
-				string name = Console.ReadLine();
+				name = Console.ReadLine();
 
 				bool valid = false;
-				string password = "";
+				password = "";
 				string specialChar = "!@#$%^&*()-_=+[{]};:,<.>/?|`~";
 				while (!valid)
 				{
@@ -115,19 +114,20 @@ namespace DestinationUnknownLibrary
 						continue;
 					}
 					foreach (char c in specialChar)
-                    {
+					{
 						if (password.Contains(c))
-                        {
+						{
 							valid = true;
-                        }
-                    }
+						}
+					}
 					if (!valid)
-                    {
+					{
 						Console.WriteLine("Your password must contain a special character\n");
 					}
 				}
 
-				string race = "";
+				race = "";
+
 				valid = false;
 				while (!valid)
 				{
@@ -157,7 +157,7 @@ namespace DestinationUnknownLibrary
 					}
 				}
 
-				string Pclass = "";
+				Pclass = "";
 				valid = false;
 				while (!valid)
 				{
@@ -166,7 +166,7 @@ namespace DestinationUnknownLibrary
 					Pclass = Console.ReadLine();
 
 					switch (Pclass.ToLower())
-                    {
+					{
 						case "warrior":
 							valid = true;
 							break;
@@ -187,20 +187,21 @@ namespace DestinationUnknownLibrary
 							continue;
 					}
 				}
-					
-				int hp = 100;
-				int location = 100;
-				List<int> inv = new List<int>() { 200, 300, 302};
-				List<string> quests = new List<string>();
+
+				hp = 100;
+				location = 100;
+				inv.Add(200);
+				inv.Add(300);
+				inv.Add(302);
 
 				StreamWriter userFile = File.CreateText("Game_Data/User_Profile.csv");
 				StreamWriter invFile = File.CreateText("Game_Data/User_Inventory.csv");
 				StreamWriter questFile = File.CreateText("Game_Data/User_Quests.csv");
-				
+
 				userFile.WriteLine(id + "," + name + "," + password + "," + race + "," + Pclass + "," + hp + "," + location);
-				
+
 				for (int i = 0; i < inv.Count; i++)
-                {
+				{
 					invFile.WriteLine(inv[i]);
 				}
 				questFile.WriteLine();
@@ -209,9 +210,8 @@ namespace DestinationUnknownLibrary
 				invFile.Close();
 				questFile.Close();
 
-				
-
-				Player.player.Add(new Player(id, name, password, race, Pclass, hp, location, inv, quests));
+				Player player = new Player(id, name, password, race, Pclass, hp, location, inv, quests);
+				return player;
 			}
 		}
 
@@ -219,6 +219,10 @@ namespace DestinationUnknownLibrary
 		// Loads Rooms
 		public static void LoadRooms()
 		{
+			List<int> mobs = new List<int>();
+			List<int> loot = new List<int>();
+			List<int> exits = new List<int>();
+
 			string line;
 			StreamReader room = File.OpenText("Game_Data/Rooms.csv");
 			StreamReader room_Mobs = File.OpenText("Game_Data/Room_Mobs.csv");
@@ -226,9 +230,6 @@ namespace DestinationUnknownLibrary
 			while ((line = room.ReadLine()) != null)
 			{
 				string[] tokens = line.Split(',');
-				List<int> mobs = new List<int>();
-				List<int> loot = new List<int>();
-				List<int> exits = new List<int>();
 
 				int roomID = int.Parse(tokens[0]);
 				string name = tokens[1];
@@ -250,14 +251,14 @@ namespace DestinationUnknownLibrary
 					{
 						mobs.Add(int.Parse(mob[i]));
 					}
-					break;
-				}
-				while ((line = room_Loot.ReadLine()) != null)
-				{
-					string[] room_loot = line.Split(',');
-					for (int i = 0; i < room_loot.Length; i++)
+					while ((line = room_Loot.ReadLine()) != null)
 					{
-						loot.Add(int.Parse(room_loot[i]));
+						string[] room_loot = line.Split(',');
+						for (int i = 0; i < room_loot.Length; i++)
+						{
+							loot.Add(int.Parse(room_loot[i]));
+						}
+						break;
 					}
 					break;
 				}
@@ -366,9 +367,9 @@ namespace DestinationUnknownLibrary
 
 				List<string> inv = new List<string>();
 				for (int i = 6; i < tokens.Length; i++)
-                {
+				{
 					inv.Add(tokens[i]);
-                }
+				}
 
 				int id = int.Parse(tokens[0]);
 				string name = tokens[1];

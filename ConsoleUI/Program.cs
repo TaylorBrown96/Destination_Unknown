@@ -20,7 +20,7 @@ namespace ConsoleUI
 		{
 			Console.WriteLine("Welcome to Destination Unknown!\n\n\n");
 
-			
+			Player player = Load.LoadUser();
 			Load.Game();
 
 
@@ -28,10 +28,11 @@ namespace ConsoleUI
 			while (!valid)
 			{
 				Console.Write("Please enter your password: ");
+				string usrinp = Console.ReadLine();
 
-				if (Console.ReadLine() == Player.player[0].Password)
+				if (usrinp == player.Password)
 				{
-					valid = Play();
+					valid = Play(player);
 				}
 				else
 				{
@@ -41,10 +42,11 @@ namespace ConsoleUI
 			Console.ReadKey();
 		}
 
-		public static bool Play()
-        {
-			Console.WriteLine("Hello " + Player.player[0].Name);
-			int roomIndex = Rooms.Room.FindIndex(a => a.RoomID == Player.player[0].Location);
+
+		public static bool Play(Player player)
+		{
+			Console.WriteLine("Hello " + player.Name);
+			int roomIndex = Rooms.Room.FindIndex(a => a.RoomID == player.Location);
 			int count = 0;
 			int north;
 			int east;
@@ -53,21 +55,21 @@ namespace ConsoleUI
 
 			Console.WriteLine("\nTo get started try typing 'help'");
 			while (true)
-            {
+			{
 				Console.Write("\n>: ");
 				switch (Console.ReadLine().ToLower())
-                {
+				{
 					case "attack":
-						Player.player[0].HP = Combat.Attack(Player.player[0].HP);
-						if (Player.player[0].HP > 0)
-                        {
-							Console.WriteLine(Player.player[0].HP);
+						player.HP = Combat.Attack(player.HP);
+						if (player.HP > 0)
+						{
+							Console.WriteLine(player.HP);
 							continue;
 						}
 						return true;
 					case "i":
-						foreach (int i in Player.player[0].Inventory)
-                        {
+						foreach (int i in player.Inventory)
+						{
 							if (Items.Item.FindIndex(a => a.Id == i) != -1)
 							{
 								Console.Write("\n   " + Items.Item[Items.Item.FindIndex(a => a.Id == i)].Name);
@@ -85,24 +87,24 @@ namespace ConsoleUI
 						break;
 					case "pickup":
 						if (Rooms.Room[roomIndex].Loot[0] == -1)
-                        {
+						{
 							Console.WriteLine("Nothing to pick up");
 							break;
-                        }
-						Player.player[0].Inventory.Add(Rooms.Room[roomIndex].Loot[0]);
+						}
+						player.Inventory.Add(Rooms.Room[roomIndex].Loot[0]);
 						Rooms.Room[roomIndex].Loot.RemoveAt(0);
 						break;
 					case "drop":
 						if (count == 0)
-                        {
-							Rooms.Room[roomIndex].Loot[0] = Player.player[0].Inventory[0];
+						{
+							Rooms.Room[roomIndex].Loot[0] = player.Inventory[0];
 							count = 1;
-                        }
-                        else
-                        {
-							Rooms.Room[roomIndex].Loot.Add(Player.player[0].Inventory[0]);
 						}
-						Player.player[0].Inventory.RemoveAt(0);
+						else
+						{
+							Rooms.Room[roomIndex].Loot.Add(player.Inventory[0]);
+						}
+						player.Inventory.RemoveAt(0);
 						break;
 					case "look":
 						north = Rooms.Room[roomIndex].Exit[0];
@@ -114,44 +116,44 @@ namespace ConsoleUI
 						Console.Write("\n\nRoom Description: \n   " + Rooms.Room[roomIndex].Description);
 						Console.Write("\n\nItems:");
 						for (int i = 0; i < Rooms.Room[roomIndex].Loot.Count; i++)
-                        {
+						{
 							if (Rooms.Room[roomIndex].Loot[i] > 0)
-                            {
+							{
 								if (Items.Item.FindIndex(a => a.Id == Rooms.Room[roomIndex].Loot[i]) != -1)
 								{
 									Console.Write("\n   " + Items.Item[Items.Item.FindIndex(a => a.Id == Rooms.Room[roomIndex].Loot[i])].Name);
 								}
 								else if (Potions.Potion.FindIndex(a => a.Id == Rooms.Room[roomIndex].Loot[i]) != -1)
-                                {
+								{
 									Console.Write("\n   " + Potions.Potion[Potions.Potion.FindIndex(a => a.Id == Rooms.Room[roomIndex].Loot[i])].Name);
 								}
 								else if (Weapons.Weapon.FindIndex(a => a.WeaponID == Rooms.Room[roomIndex].Loot[i]) != -1)
-                                {
+								{
 									Console.Write("\n   " + Weapons.Weapon[Weapons.Weapon.FindIndex(a => a.WeaponID == Rooms.Room[roomIndex].Loot[i])].Name);
-                                }
+								}
 							}
-                        }
+						}
 						Console.Write("\n\nEnemies:");
 						if (Rooms.Room[roomIndex].Mobs[0] > 0)
-                        {
+						{
 							Console.Write("\n   " + Mobs.Mob[Mobs.Mob.FindIndex(a => a.Id == Rooms.Room[roomIndex].Mobs[0])].Name);
-                        }
+						}
 
 						Console.WriteLine("\n\nExits:");
 						if (north > 0)
-                        {
+						{
 							Console.WriteLine("   North: " + Rooms.Room[Rooms.Room.FindIndex(a => a.RoomID == north)].Name);
-                        }
+						}
 						if (east > 0)
-                        {
+						{
 							Console.WriteLine("   East: " + Rooms.Room[Rooms.Room.FindIndex(a => a.RoomID == east)].Name);
 						}
 						if (south > 0)
-                        {
+						{
 							Console.WriteLine("   South: " + Rooms.Room[Rooms.Room.FindIndex(a => a.RoomID == south)].Name);
 						}
 						if (west > 0)
-                        {
+						{
 							Console.WriteLine("   West: " + Rooms.Room[Rooms.Room.FindIndex(a => a.RoomID == west)].Name);
 						}
 						break;
@@ -159,13 +161,13 @@ namespace ConsoleUI
 						north = Rooms.Room[roomIndex].Exit[0];
 
 						if (north > 0)
-                        {
+						{
 							roomIndex = Rooms.Room.FindIndex(a => a.RoomID == north);
 						}
 						else
-                        {
+						{
 							Console.WriteLine("There is nothing in that direction");
-                        }
+						}
 						break;
 					case "e":
 						east = Rooms.Room[roomIndex].Exit[1];
@@ -219,8 +221,8 @@ namespace ConsoleUI
 					default:
 						Console.WriteLine("I dont know that command");
 						continue;
-                }
-            }
+				}
+			}
 		}
 	}
 }
