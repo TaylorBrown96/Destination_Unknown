@@ -20,9 +20,8 @@ namespace ConsoleUI
 		{
 			Console.WriteLine("Welcome to Destination Unknown!\n\n\n");
 
-			Player player = Load.LoadUser();
+			Player player = Player.LoadUser();
 			Load.Game();
-
 
 			bool valid = false;
 			while (!valid)
@@ -39,6 +38,7 @@ namespace ConsoleUI
 					Console.WriteLine("The password entered was incorrect\n");
 				}
 			}
+			Console.WriteLine("Thank you for playing");
 			Console.ReadKey();
 		}
 
@@ -46,7 +46,7 @@ namespace ConsoleUI
 		public static bool Play(Player player)
 		{
 			Console.WriteLine("Hello " + player.Name);
-			int roomIndex = Rooms.Room.FindIndex(a => a.RoomID == player.Location);
+			int roomIndex = Rooms.Room.FindIndex(a => a.Room_ID == player.Location);
 			int count = 0;
 			int north;
 			int east;
@@ -66,7 +66,25 @@ namespace ConsoleUI
 							Console.WriteLine(player.HP);
 							continue;
 						}
-						return true;
+						Console.WriteLine("You Died!");
+						Console.Write("\nWould you like to respawn from the start?: " );
+                        while (true)
+                        {
+							switch (Console.ReadLine().ToLower())
+							{
+								case "y":
+									player.HP = 100;
+									roomIndex = Rooms.Room.FindIndex(a => a.Room_ID == 100);
+									break;
+								case "n":
+									return true;
+								default:
+									Console.WriteLine("I dont know that command dork");
+									continue;
+							}
+							break;
+						}
+						break;
 					case "i":
 						foreach (int i in player.Inventory)
 						{
@@ -78,9 +96,9 @@ namespace ConsoleUI
 							{
 								Console.Write("\n   " + Potions.Potion[Potions.Potion.FindIndex(a => a.Id == i)].Name);
 							}
-							else if (Weapons.Weapon.FindIndex(a => a.WeaponID == i) != -1)
+							else if (Weapons.Weapon.FindIndex(a => a.Id == i) != -1)
 							{
-								Console.Write("\n   " + Weapons.Weapon[Weapons.Weapon.FindIndex(a => a.WeaponID == i)].Name);
+								Console.Write("\n   " + Weapons.Weapon[Weapons.Weapon.FindIndex(a => a.Id == i)].Name);
 							}
 						}
 						Console.Write("\n");
@@ -127,34 +145,34 @@ namespace ConsoleUI
 								{
 									Console.Write("\n   " + Potions.Potion[Potions.Potion.FindIndex(a => a.Id == Rooms.Room[roomIndex].Loot[i])].Name);
 								}
-								else if (Weapons.Weapon.FindIndex(a => a.WeaponID == Rooms.Room[roomIndex].Loot[i]) != -1)
+								else if (Weapons.Weapon.FindIndex(a => a.Id == Rooms.Room[roomIndex].Loot[i]) != -1)
 								{
-									Console.Write("\n   " + Weapons.Weapon[Weapons.Weapon.FindIndex(a => a.WeaponID == Rooms.Room[roomIndex].Loot[i])].Name);
+									Console.Write("\n   " + Weapons.Weapon[Weapons.Weapon.FindIndex(a => a.Id == Rooms.Room[roomIndex].Loot[i])].Name);
 								}
 							}
 						}
 						Console.Write("\n\nEnemies:");
-						if (Rooms.Room[roomIndex].Mobs[0] > 0)
+						if (Rooms.Room[roomIndex].Mob[0] > 0)
 						{
-							Console.Write("\n   " + Mobs.Mob[Mobs.Mob.FindIndex(a => a.Id == Rooms.Room[roomIndex].Mobs[0])].Name);
+							Console.Write("\n   " + Mobs.Mob[Mobs.Mob.FindIndex(a => a.Id == Rooms.Room[roomIndex].Mob[0])].Name);
 						}
 
 						Console.WriteLine("\n\nExits:");
 						if (north > 0)
 						{
-							Console.WriteLine("   North: " + Rooms.Room[Rooms.Room.FindIndex(a => a.RoomID == north)].Name);
+							Console.WriteLine("   North: " + Rooms.Room[Rooms.Room.FindIndex(a => a.Room_ID == north)].Name);
 						}
 						if (east > 0)
 						{
-							Console.WriteLine("   East: " + Rooms.Room[Rooms.Room.FindIndex(a => a.RoomID == east)].Name);
+							Console.WriteLine("   East: " + Rooms.Room[Rooms.Room.FindIndex(a => a.Room_ID == east)].Name);
 						}
 						if (south > 0)
 						{
-							Console.WriteLine("   South: " + Rooms.Room[Rooms.Room.FindIndex(a => a.RoomID == south)].Name);
+							Console.WriteLine("   South: " + Rooms.Room[Rooms.Room.FindIndex(a => a.Room_ID == south)].Name);
 						}
 						if (west > 0)
 						{
-							Console.WriteLine("   West: " + Rooms.Room[Rooms.Room.FindIndex(a => a.RoomID == west)].Name);
+							Console.WriteLine("   West: " + Rooms.Room[Rooms.Room.FindIndex(a => a.Room_ID == west)].Name);
 						}
 						break;
 					case "n":
@@ -162,7 +180,7 @@ namespace ConsoleUI
 
 						if (north > 0)
 						{
-							roomIndex = Rooms.Room.FindIndex(a => a.RoomID == north);
+							roomIndex = Rooms.Room.FindIndex(a => a.Room_ID == north);
 						}
 						else
 						{
@@ -173,7 +191,7 @@ namespace ConsoleUI
 						east = Rooms.Room[roomIndex].Exit[1];
 						if (east > 0)
 						{
-							roomIndex = Rooms.Room.FindIndex(a => a.RoomID == east);
+							roomIndex = Rooms.Room.FindIndex(a => a.Room_ID == east);
 						}
 						else
 						{
@@ -184,7 +202,7 @@ namespace ConsoleUI
 						south = Rooms.Room[roomIndex].Exit[2];
 						if (south > 0)
 						{
-							roomIndex = Rooms.Room.FindIndex(a => a.RoomID == south);
+							roomIndex = Rooms.Room.FindIndex(a => a.Room_ID == south);
 						}
 						else
 						{
@@ -195,7 +213,7 @@ namespace ConsoleUI
 						west = Rooms.Room[roomIndex].Exit[3];
 						if (west > 0)
 						{
-							roomIndex = Rooms.Room.FindIndex(a => a.RoomID == west);
+							roomIndex = Rooms.Room.FindIndex(a => a.Room_ID == west);
 						}
 						else
 						{
@@ -203,7 +221,6 @@ namespace ConsoleUI
 						}
 						break;
 					case "exit":
-						Console.WriteLine("Thank you for playing");
 						return true;
 					case "help":
 						Console.WriteLine("Commands:");

@@ -42,7 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Combat.cs" />
-    <Compile Include="Load.cs" />
+    <Compile Include="Items.cs" />
+    <Compile Include="Mobs.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Potions.cs" />
+    <Compile Include="Rooms.cs" />
+    <Compile Include="Treasures.cs" />
+    <Compile Include="Weapons.cs" />
     <Compile Include="World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
